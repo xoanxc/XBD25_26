@@ -1,4 +1,3 @@
-# Exercicios SQL -- Obsidian
 
 ## 1) Amosar nomes de balnearios cuxo coste diario supere os 45 euros
 
