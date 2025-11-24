@@ -1,6 +1,4 @@
-## **d1-c1) Personaxes con letra 'a' e 'n'**
-
-**ES:** Mostrar nombres de personajes que tengan una letra 'a' y una letra 'n' en su nombre.
+## **d1-c1) Amosar nomes de personaxes que teñan unha letra 'a'  e unha letra 'n' no seu nome
 
 ### Consulta SQL
 
@@ -18,14 +16,12 @@ tagana
 
 ---
 
-## **d1-c1') Actores con 'y' o 'j' en su nombre**
-
-**ES:** Mostrar nombres de actores que tengan una letra 'y' o una letra 'j'.
+## **d1-c1') Amosar nomes de actores  que teñan unha letra 'y'  ou unha letra 'j' no seu nome**
 
 ### Consulta SQL
 
 ```sql
--- Tu consulta aquí
+SELECT noma FROM actores WHERE noma LIKE '%y%' OR noma LIKE '%j%';
 ```
 
 ### Resultado esperado
@@ -41,9 +37,7 @@ brandy
 
 ---
 
-## **d1-c3) Actores sin fecha de nacimiento**
-
-**ES:** De cuántos actores no se conoce la fecha de nacimiento.
+## **d1-c3) De cantos actores non se coñece a data de nacemento?
 
 ### Consulta SQL
 
@@ -59,9 +53,7 @@ brandy
 
 ---
 
-## **d1-c3') Interpretes de series sin horas conocidas**
-
-**ES:** De cuántos intérpretes de series no se conocen las horas trabajadas.
+## **d1-c3') De cantos interpretes de series  non se coñece as horas que levan traballadas?
 
 ### Consulta SQL
 
@@ -77,9 +69,7 @@ brandy
 
 ---
 
-## **d1-c4) Horas de rodaje actor 'a1'**
-
-**ES:** Cuántas horas de rodaje empleó el actor con código 'a1' en todas las series en las que intervino.
+## **d1-c4) Cantas horas de rodaxe empregou o actor de codigo 'a1' en todas as series nas que interviu.
 
 ### Consulta SQL
 

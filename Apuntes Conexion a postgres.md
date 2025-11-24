@@ -11,7 +11,7 @@ Perfecto, Xoán. Te paso el contenido formateado en Markdown listo para Obsidian
 2. Conectarse con:
     
     ```bash
-      psql postgres postgres
+    psql postgres postgres
     ```
     
 
@@ -43,34 +43,34 @@ Perfecto, Xoán. Te paso el contenido formateado en Markdown listo para Obsidian
 ### 1. Insertar una fila
 
 ```sql
-insert into nombre_tabla values (numero, 'texto', ...);
+INSERT INTO nombre_tabla VALUES (numero, 'texto', ...);
 ```
 
 ### 2. Ver contenido completo de una tabla
 
 ```sql
-select * from nombre_tabla;
+SELECT * FROM nombre_tabla;
 ```
 
 ### 3. Borrar una fila por clave
 
 ```sql
-delete from nombre_tabla where nombre_de_la_clave = valor;
+DELETE FROM nombre_tabla WHERE nombre_de_la_clave = valor;
 -- valor entre comillas si es texto
 ```
 
 ### 4. Consultar filas concretas
 
 ```sql
-select ... from nombre_tabla where campo = valor;
+SELECT ... FROM nombre_tabla WHERE campo = valor;
 -- valor entre comillas si es texto
 ```
 
 ### 5. Consultar valores nulos
 
 ```sql
-select ... from nombre_tabla where campo is null;
-select ... from nombre_tabla where campo is not null;
+SELECT ... FROM nombre_tabla WHERE campo IS null;
+SELECT ... FROM nombre_tabla WHERE campo IS NOT null;
 ```
 
 ### 6. Ver tablas existentes en la base
@@ -94,8 +94,8 @@ select ... from nombre_tabla where campo is not null;
 ### 9. Modificar el valor de un campo en una fila
 
 ```sql
-update nombre_tabla set campo_a_modificar = nuevo_valor
-where campo_de_seleccion_de_filas = valor;
+UPDATE nombre_tabla SET campo_a_modificar = nuevo_valor
+WHERE campo_de_seleccion_de_filas = valor;
 ```
 
 ### 10. Operadores de comparación
@@ -113,5 +113,5 @@ AND, OR
 ### 12. Ordenar la salida de un SELECT
 
 ```sql
-select ... from nombre_tabla order by nombre_campo [desc];
+SELECT ... FROM nombre_tabla ORDER BY nombre_campo [DESC];
 ```

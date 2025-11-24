@@ -39,10 +39,7 @@ WHERE poboacions.codp = pacientes.codp
 
 ------------------------------------------------------------------------
 
-## 3) Indicar os tipos de augas indicadas para pacientes con 'ril'
-
-**ES:** Indicar los tipos de aguas indicadas para pacientes que sufren
-de 'ril'.
+## 3) Indicar os tipos de augas que estarian indicadas para os pacientes que sufren de 'ril'
 
 ### Consulta SQL
 
@@ -66,17 +63,12 @@ WHERE coda IN (
 
 ------------------------------------------------------------------------
 
-## 4) Amosar códigos de poboacións e número de pacientes
-
-**ES:** Mostrar códigos de poblaciones donde viven pacientes y el número
-de pacientes por población.
+## 4) Amosar codigos de poboacions onde viven os pacientes e o numero de pacientes que ten cada unha desas poboacions
 
 ### Consulta SQL
 
 ``` sql
-SELECT codp, COUNT(nif)
-FROM pacientes
-GROUP BY codp;
+SELECT codp, COUNT(nif) FROM pacientes GROUP BY codp;
 ```
 
 ### Resultado esperado
@@ -95,15 +87,10 @@ GROUP BY codp;
 
 ## 5) Amosar de cantos minerais se compón cada tipo de auga
 
-**ES:** Mostrar de cuántos minerales se compone cada tipo de agua.
-
 ### Consulta SQL
 
 ``` sql
-SELECT tipo, COUNT(*)
-FROM augas, compon
-WHERE augas.coda = compon.coda
-GROUP BY tipo;
+SELECT tipo, COUNT(*) FROM augas, compon WHERE augas.coda = compon.coda GROUP BY tipo;
 ```
 
 ### Resultado esperado
@@ -116,7 +103,13 @@ GROUP BY tipo;
 
 ------------------------------------------------------------------------
 
-## 6) Médicos que atenderon crónicos e agudos
+## 6) Amosar os codigos de medicos que cumplan que asignaron polo menos un balneario a un paciente crónico e prescribiron polo menos un balneario a un enfermo agudo (e dicir, que si asignaron un balneario a un paciente cronico pero non prescribiron ningun a un paciente agudo, ou viceversa,  non deben aparecer no listado)
+
+### Consulta SQL
+
+``` sql
+SELECT nomme FROM medicos WHERE codme IN (SELECT DISTINCT codme FROM asignan WHERE codme IN (SELECT codme FROM prescriben));
+```
 
 ### Resultado esperado
 
@@ -126,7 +119,28 @@ GROUP BY tipo;
 
 ------------------------------------------------------------------------
 
-## 7) Amosar NIF, nome e poboación dos pacientes
+## 6.1) Amosar os nomes de medicos que cumplan que asignaron polo menos un balneario a un paciente crónico e prescribiron polo menos un balneario a un enfermo agudo (e dicir, que si asignaron un balneario a un paciente cronico pero non prescribiron ningun a un paciente agudo, ou viceversa,  non deben aparecer no listado)
+
+### Consulta SQL
+
+``` sql
+SELECT nomme FROM medicos WHERE codme IN (SELECT codme FROM asignan WHERE codme IN (SELECT codme FROM prescriben));
+```
+
+### Resultado esperado
+
+    m4
+    m1
+    m5
+
+------------------------------------------------------------------------
+## 7) Amosar  nif e nome de todos e cada un dos pacientes e ademais a poboacion onde viven
+
+### Consulta SQL
+
+``` sql
+SELECT nif,pacientes.nomp,poboacions.nomp FROM poboacions right JOIN pacientes ON pacientes.codp=poboacions.codp;
+```
 
 ### Resultado esperado
 
@@ -151,7 +165,14 @@ GROUP BY tipo;
 
 ------------------------------------------------------------------------
 
-## 8) Balneario onde estaba o paciente 3615 o 8/7/2020
+## 8) [MODIFICADA] Amosar o nome do balneario se atopaba o paciente agudo de nif 3615 o 8/7/2020
+
+
+### Consulta SQL
+
+``` sql
+SELECT nomb FROM balnearios WHERE codb IN (SELECT codb FROM prescriben WHERE nif='3615' AND dea<='8/7/2020' AND dsa>='8/7/2020');
+```
 
 ### Resultado esperado
 
@@ -159,7 +180,13 @@ GROUP BY tipo;
 
 ------------------------------------------------------------------------
 
-## 9) Amosar NIF dos pacientes se hai tantos crónicos coma agudos
+## 9) Amosar os nif de todos os pacientes se o numero de pacientes cronicos e igual  ao numero de pacientes agudos
+
+### Consulta SQL
+
+``` sql
+SELECT nif FROM pacientes WHERE (SELECT COUNT(*) FROM cronicos)=(SELECT COUNT(*) FROM agudos);
+```
 
 ### Resultado esperado
 
@@ -184,7 +211,13 @@ GROUP BY tipo;
 
 ------------------------------------------------------------------------
 
-## 10) Poboacións que non teñen balnearios
+## 10) Amosar os nomes das poboacions que non posuan balnearios
+
+### Consulta SQL
+
+``` sql
+ --- Introducir Consulta
+```
 
 ### Resultado esperado
 
@@ -202,7 +235,13 @@ GROUP BY tipo;
 
 ------------------------------------------------------------------------
 
-## 11) Balnearios que teñen o mesmo nome ca unha poboación
+## 11) Amosar nomes de balnearios que se chamen exactamente igual que nomes de poboacions
+
+### Consulta SQL
+
+``` sql
+ --- Introducir Consulta
+```
 
 ### Resultado esperado
 
@@ -213,7 +252,13 @@ GROUP BY tipo;
 
 ------------------------------------------------------------------------
 
-## 12) Pacientes con nome distinto aos médicos
+## 12) Amosar nomes de pacientes distintos aos nomes de calquera medico, sen repeticion
+
+### Consulta SQL
+
+``` sql
+SELECT DISTINCT nomp FROM pacientes WHERE nomp NOT IN (SELECT nomme FROM medicos);
+```
 
 ### Resultado esperado
 
@@ -235,7 +280,13 @@ GROUP BY tipo;
 
 ------------------------------------------------------------------------
 
-## 12_2) Amosar nomes de pacientes e nomes de médicos
+## 12_2) Amosar nomes de pacientes e nomes dos medicos
+
+### Consulta SQL
+
+``` sql
+SELECT nomp nomes_pac-med FROM pacientes UNION SELECT nomme FROM medicos;
+```
 
 ### Resultado esperado
 
@@ -266,6 +317,12 @@ GROUP BY tipo;
 
 ## 13) Amosar nomes de pacientes sen repetición
 
+### Consulta SQL
+
+``` sql
+SELECT DISTINCT nomp FROM pacientes;
+```
+
 ### Resultado esperado
 
     carlos
@@ -289,6 +346,12 @@ GROUP BY tipo;
 
 ## 14) Pacientes con polo menos unha 'a' e unha 'o'
 
+### Consulta SQL
+
+``` sql
+SELECT nomp FROM pacientes WHERE nomp LIKE '%a%' AND nomp LIKE '%o%'
+```
+
 ### Resultado esperado
 
     carlos
@@ -297,8 +360,31 @@ GROUP BY tipo;
     mario
 
 ------------------------------------------------------------------------
+## [NON FACER] 15) Amosar os nomes de todos e cada un dos medicos e os  nomes dos seus xefes
+### Consulta SQL
 
-## 16) Hoteis con algunha habitación con internet
+``` sql
+SELECT m.nomme medico,mx.nomme xefe FROM medicos m left JOIN medicos mx ON m.xef=mx.codme;
+```
+
+### Resultado esperado
+
+    francisco	federico
+    rosa		federico
+    manuel		anabel
+    elena		anabel
+    mario		elena
+    anabel
+    federico
+
+------------------------------------------------------------------------
+## 16) Amosar os nomes dos hoteis que posuan  algunha habitacion con interede
+
+### Consulta SQL
+
+``` sql
+SELECT nomh FROM hoteis WHERE codh IN (SELECT codh FROM habitacions WHERE interede='s');
+```
 
 ### Resultado esperado
 
@@ -309,7 +395,13 @@ GROUP BY tipo;
 
 ------------------------------------------------------------------------
 
-## 17) Ingresos mensuais dos pacientes crónicos
+## 17) Amosar cales son os ingresos mensuais  dos pacientes cronicos
+
+### Consulta SQL
+
+``` sql
+SELECT ingm FROM pacientes WHERE nif IN (SELECT nif FROM cronicos);
+```
 
 ### Resultado esperado
 
@@ -325,7 +417,13 @@ GROUP BY tipo;
 
 ------------------------------------------------------------------------
 
-## 18) Balnearios que teñen fisioterapeuta
+## 18) Amosar os nomes dos balnearios que posuan  fisioterapeuta
+
+### Consulta SQL
+
+``` sql
+SELECT nomb FROM balnearios WHERE codb IN (SELECT codb FROM cat1 WHERE fisioterapeuta='s')
+```
 
 ### Resultado esperado
 
