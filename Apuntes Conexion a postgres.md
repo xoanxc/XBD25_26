@@ -1,4 +1,3 @@
-Perfecto, Xoán. Te paso el contenido formateado en Markdown listo para Obsidian. Solo tienes que copiarlo en un archivo `.md` nuevo.
 
 ---
 

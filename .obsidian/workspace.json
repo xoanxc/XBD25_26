@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Apuntes Conexion a postgres.md",
+                "file": "Consultas Startrek.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Apuntes Conexion a postgres"
+              "title": "Consultas Startrek"
             }
           }
         ]
@@ -186,9 +186,9 @@
   "active": "ba75ae5f267281fa",
   "lastOpenFiles": [
     "Consultas Balnearios.md",
-    "Consultas Startrek.md",
-    "Apuntes Conexion a postgres.md",
     "templates/sql_exercise_template.md",
+    "Apuntes Conexion a postgres.md",
+    "Consultas Startrek.md",
     "Nuevo Documento de texto.txt",
     "templates",
     "Sin título.base"
