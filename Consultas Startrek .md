@@ -5,7 +5,7 @@
 ### Consulta SQL
 
 ```sql
--- Tu consulta aquí
+SELECT nomper FROM personaxes WHERE nomper LIKE '%a%' AND nomper LIKE '%n%';
 ```
 
 ### Resultado esperado
