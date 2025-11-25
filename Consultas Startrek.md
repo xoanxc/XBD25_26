@@ -42,7 +42,7 @@ brandy
 ### Consulta SQL
 
 ```sql
--- Tu consulta aquí
+SELECT COUNT(datan) FROM actores WHERE datan IS null;
 ```
 
 ### Resultado esperado
@@ -58,7 +58,7 @@ brandy
 ### Consulta SQL
 
 ```sql
--- Tu consulta aquí
+SELECT COUNT(*) FROM interpretesser WHERE horas IS null;
 ```
 
 ### Resultado esperado
