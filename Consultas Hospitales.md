@@ -102,7 +102,7 @@ jose
 ### Consulta SQL
 
 ```sql
-SELECT
+SELECT codm, nomm FROM medico WHERE codm NOT IN (SELECT codm FROM hosp1);
 ```
 
 ### Resultado esperado
@@ -118,7 +118,7 @@ m3   | virginia
 ### Consulta SQL
 
 ```sql
-SELECT
+SELECT area.coda, COUNT(codm) FROM area LEFT JOIN adscrito ON area.coda=adscrito.coda GROUP BY area.coda;
 ```
 
 ### Resultado esperado
@@ -140,7 +140,7 @@ a2   |     1
 ### Consulta SQL
 
 ```sql
-SELECT
+SELECT codm1, nomm FROM medico WHERE codm1 IS null;
 ```
 
 ### Resultado esperado
@@ -157,7 +157,7 @@ m2   | ana
 ### Consulta SQL
 
 ```sql
-SELECT
+SELECT codp, numas  FROM a1c WHERE codp IN (SELECT codp FROM hosp1 WHERE datai BETWEEN '10/2/2016' AND '23/3/2017');
 ```
 
 ### Resultado esperado
@@ -175,7 +175,7 @@ p6   | 1
 ### Consulta SQL
 
 ```sql
-SELECT
+SELECT sum(numc) FROM hospital WHERE codh IN (SELECT codh FROM concertado);
 ```
 
 ### Resultado esperado
@@ -191,7 +191,7 @@ SELECT
 ### Consulta SQL
 
 ```sql
-SELECT
+SELECT codh, nomh FROM hospital WHERE numc IN (SELECT numc FROM hospital WHERE codh IN (SELECT codh FROM propio)) AND numc IN (SELECT numc FROM hospital WHERE codh IN (SELECT codh FROM concertado));
 ```
 
 ### Resultado esperado
