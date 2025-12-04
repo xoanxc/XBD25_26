@@ -1,7 +1,7 @@
 
 ---
 
-# PostgreSQL – Primeros Apuntes
+# PostgreSQL
 
 ## 🔹 Conectarse a PostgreSQL
 
@@ -9,9 +9,9 @@
     
 2. Conectarse con:
     
-    ```bash
-    psql postgres postgres
-    ```
+```bash
+psql postgres postgres
+```
     
 
 ---
@@ -30,9 +30,9 @@
     
 2. Conectarse de nuevo:
     
-    ```bash
-    psql postgres postgres
-    ```
+```bash
+psql postgres postgres
+```
     
 
 ---
