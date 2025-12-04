@@ -1,4 +1,4 @@
-## **d1-c1) Amosar nomes de personaxes que teñan unha letra 'a'  e unha letra 'n' no seu nome
+## d1-c1) Amosar nomes de personaxes que teñan unha letra 'a'  e unha letra 'n' no seu nome
 
 ### Consulta SQL
 
@@ -16,7 +16,7 @@ tagana
 
 ---
 
-## **d1-c1') Amosar nomes de actores  que teñan unha letra 'y'  ou unha letra 'j' no seu nome**
+## d1-c1') Amosar nomes de actores  que teñan unha letra 'y'  ou unha letra 'j' no seu nome
 
 ### Consulta SQL
 
@@ -37,12 +37,12 @@ brandy
 
 ---
 
-## **d1-c3) De cantos actores non se coñece a data de nacemento?
+## d1-c3) De cantos actores non se coñece a data de nacemento?
 
 ### Consulta SQL
 
 ```sql
-SELECT COUNT(datan) FROM actores WHERE datan IS null;
+SELECT COUNT(datan) FROM actores WHERE datan IS NULL;
 ```
 
 ### Resultado esperado
@@ -53,12 +53,12 @@ SELECT COUNT(datan) FROM actores WHERE datan IS null;
 
 ---
 
-## **d1-c3') De cantos interpretes de series  non se coñece as horas que levan traballadas?
+## d1-c3') De cantos interpretes de series  non se coñece as horas que levan traballadas?
 
 ### Consulta SQL
 
 ```sql
-SELECT COUNT(*) FROM interpretesser WHERE horas IS null;
+SELECT COUNT(*) FROM interpretesser WHERE horas IS NULL;
 ```
 
 ### Resultado esperado
@@ -69,7 +69,7 @@ SELECT COUNT(*) FROM interpretesser WHERE horas IS null;
 
 ---
 
-## **d1-c4) Cantas horas de rodaxe empregou o actor de codigo 'a1' en todas as series nas que interviu.
+## d1-c4) Cantas horas de rodaxe empregou o actor de codigo 'a1' en todas as series nas que interviu.
 
 ### Consulta SQL
 
@@ -85,9 +85,7 @@ SELECT sum(horas) FROM interpretesser WHERE coda='a1';
 
 ---
 
-## **d1-c4') Media por hora actores de nacionalidad 'espanha'**
-
-**ES:** Cuánto cobran de media por hora los actores de nacionalidad 'España'.
+## d1-c4') Canto cobran de media por hora os actores de nacionalidade 'espanha' ( nota o que cobra por hora un actor e o que se denomina cachehora)
 
 ### Consulta SQL
 
@@ -103,9 +101,7 @@ SELECT avg(cachehora) FROM actores WHERE nacionalidade='espanha';
 
 ---
 
-## **d1-c5) Naves usadas en serie 's1'**
-
-**ES:** Mostrar los nombres de las naves que se usan para visitar planetas en la serie de código 's1'.
+## d1-c5) Amosar os nomes  dos naves que se usan para visitar planetas na serie de codigo 's1' enterprise   
 
 ### Consulta SQL
 
@@ -122,9 +118,7 @@ voyager
 
 ---
 
-## **d1-c6) Amosa nome de planetas da galaxia 'via_lactea'**
-
-**ES:** Mostrar nombres de planetas de la galaxia 'via_lactea'.
+## d1-c6) Amosar os nomes dos planetas da galaxia  'via_lactea'
 
 ### Consulta SQL
 
@@ -145,14 +139,12 @@ vulcano
 
 ---
 
-## **d1-c6') Personaxes con graduación 'oficial'**
-
-**ES:** Mostrar nombres de personajes que tengan graduación 'oficial'.
+## d1-c6') Amosar os nomes dos personaxes que teñan de graduación 'oficial'
 
 ### Consulta SQL
 
 ```sql
-SELECT nomper FROM personaxes WHERE ...;
+SELECT nomper FROM personaxes WHERE graduacion ='oficial';
 ```
 
 ### Resultado esperado
@@ -169,9 +161,7 @@ kira
 
 ---
 
-## **d2-c0) Personaxes sen película asociada**
-
-**ES:** Mostrar nombres de personajes que están en la base de datos pero no están relacionados todavía con ninguna película.
+## d2-c0) Amosar os nomes dos personaxes que estando na base de datos non están relacionados todavía con ninguna película
 
 ### Consulta SQL
 
@@ -219,9 +209,7 @@ kira
 
 ---
 
-## **d2-c0') Amosar nomes de planetas que non foron visitados**
-
-**ES:** Mostrar nombres de planetas que no fueron visitados.
+## d2-c0') Amosar nomes de planetas que non foron visitados
 
 ### Consulta SQL
 
@@ -240,14 +228,12 @@ vulcano
 
 ---
 
-## **d2-c3) Amosar nomes de actores que participan polo menos unha vez nunha pelicula**
-
-**ES:** Mostrar nombres de actores que participan al menos una vez en una serie y al menos una vez en una película.
+## d2-c3) Amosar nomes de actores que participan  polo menos unha vez nunha serie e polo menos unha vez nunha pelicula (as duas cousas a vez)
 
 ### Consulta SQL
 
 ```sql
-SELECT noma FROM actores WHERE coda IN (SELECT coda FROM interpresser) AND coda in (SELECT coda FROM interprespel)
+SELECT noma FROM actores WHERE coda IN (SELECT coda FROM interpresser) AND coda IN (SELECT coda FROM interprespel);
 ```
 
 ### Resultado esperado
@@ -264,14 +250,12 @@ yuan
 
 ---
 
-## **d2-c3') Personaxes que non participan en series ni películas**
-
-**ES:** Mostrar nombres de personajes que no participan en series ni películas.
+## d2-c3') Amosar nomes de personaxes que non  participan  en series nen en peliculas
 
 ### Consulta SQL
 
 ```sql
-SELECT nomper FROM personaxes WHERE codper NOT IN (SELECT codper FROM interpretesser) AND codper NOT IN (SELECT codper from interpretespel)
+SELECT nomper FROM personaxes WHERE codper NOT IN (SELECT codper FROM interpretesser) AND codper NOT IN (SELECT codper from interpretespel);
 ```
 
 ### Resultado esperado
@@ -309,14 +293,12 @@ kurn
 
 ---
 
-## **d2-c4) Soldados independentes**
-
-**ES:** Mostrar nombres de personajes que son soldados y no dependen de ningún otro personaje.
+## d2-c4) Amosar os nomes dos personaxes que son soldados e non dependen de ningun outro personaxe
 
 ### Consulta SQL
 
 ```sql
-SELECT nomper FROM personaxes WHERE graduacion='soldado' AND codper2 IS null;
+SELECT nomper FROM personaxes WHERE graduacion='soldado' AND codper2 IS NULL;
 ```
 
 ### Resultado esperado
@@ -330,14 +312,12 @@ garak
 
 ---
 
-## **d2-c4') Actores que cobran 200 sin fecha de nacimiento**
-
-**ES:** Mostrar nombres de actores que cobran 200 de cachehora y cuya fecha de nacimiento es desconocida.
+## d2-c4') Amosar os nomes dos actores que cobren 200 de cachehora dos que non se sepa a data de nacemento
 
 ### Consulta SQL
 
 ```sql
-SELECT noma FROM actores WHERE cachehora=200 AND datan IS null;
+SELECT noma FROM actores WHERE datan IS NULL AND cachehora=200;
 ```
 
 ### Resultado esperado
@@ -349,12 +329,12 @@ ana
 
 ---
 
-## **d2-c5) Número de personajes interpretados por actor 'a18' en serie 'deep_space_nine'**
+## d2-c5) Amosa o numero de  personaxes que interpreta o actor de codigo 'a18'  na serie de nome 'deep_space_nine'
 
 ### Consulta SQL
 
 ```sql
-SELECT COUNT(*) FROM interpretesser WHERE coda='a18' AND cods IN (SELECT cods FROM series WHERE titulo='deep_space_nine');
+SELECT COUNT(codper) FROM interpretesser WHERE coda='a18' AND cods IN (SELECT cods FROM series WHERE titulo='deep_space_nine');
 ```
 
 ### Resultado esperado
@@ -365,12 +345,12 @@ SELECT COUNT(*) FROM interpretesser WHERE coda='a18' AND cods IN (SELECT cods FR
 
 ---
 
-## **d2-c6) Naves que non teñen lanzadeiras**
+## d2-c6) Amosar nomes de naves que non  teñen lanzaderas
 
 ### Consulta SQL
 
 ```sql
--- Tu consulta aquí
+SELECT nomen FROM naves WHERE codn NOT IN (SELECT codn FROM lanzaderas);
 ```
 
 ### Resultado esperado
@@ -381,7 +361,7 @@ speedo
 
 ---
 
-## **d3-c7) [NON FACER] Cantos klingon proceden de planetas visitados na serie que ten por titulo 'enterprise'**
+## d3-c7) [NON FACER] Cantos klingon proceden de planetas visitados na serie que ten por titulo 'enterprise'
 
 ### Consulta SQL
 
@@ -397,9 +377,15 @@ SELECT COUNT(*) FROM klingon WHERE codpla IN (SELECT codpla FROM visitas WHERE c
 
 ---
 
-## **d3-c8) Media de cachehora con nulos**
+## d3-c8) Canto cobran de media por hora os actores tendo en conta os nulos
 
 ### Consulta SQL
+
+```sql
+select sum(cachehora)/count(*) from actores;
+```
+
+### Consulta alternativa (da un resultado mas exacto, en este caso entrega todos los decimales que pide el ejercicio)
 
 ```sql
 SELECT sum(cachehora)*1.0/COUNT(*) FROM actores;
@@ -413,42 +399,32 @@ SELECT sum(cachehora)*1.0/COUNT(*) FROM actores;
 
 ---
 
-## **d3- c10 ) [NON FACER] Amosar codigos de lanzaderas que se usaron para visitar o planeta 'mart' na serie 'next_generation'.**
+## d3- c10) [NON FACER] Amosar codigos de lanzaderas que se usaron para visitar o planeta 'mart' na serie 'next_generation'
 
 ### Consulta SQL
 
 ```sql
-SELECT codn, numero FROM lanzaderas WHERE codn IN (SELECT codn FROM visitas WHERE cods IN (SELECT cods FROM series WHERE titulo='next_generation' AND codpla IN (SELECT codpla FROM planetas WHERE nompla='mart')));
+SELECT codn, numero FROM lanzaderas WHERE codn IN (SELECT codn FROM visitas WHERE codpla IN (SELECT codpla FROM planetas WHERE nompla='mart' ) AND cods IN (SELECT cods FROM series WHERE titulo='next_generation'));
 ```
 
 ### Resultado esperado
 
 ```
 n4          11
-
 n4          10
-
 n4           9
-
 n4           8
-
 n4           7
-
 n4           6
-
 n4           5
-
 n4           4
-
 n2           3
-
 n2           2
-
 n2           1
 ```
 
 ---
-## d3-c12) **Amosar nomes de actores de series que interpreten personaxes que teñen una letra 'y' no seu nome de personaxe**:
+## d3-c12) Amosar nomes de actores de series que interpreten personaxes que teñen una letra 'y' no seu nome de personaxe
 
 ### Consulta SQL
 
@@ -466,12 +442,12 @@ luis
 
 ---
 
-## **d3-c13) [DIFICIL] Amosar nomes de actores que teñan polo menos unha letra ' a' ,  de series  interpretadas por  personaxes que teñen una letra 'a' no seu nome de personaxe**
+## d3-c13) [DIFICIL] Amosar nomes de actores que teñan polo menos unha letra ' a' ,  de series  interpretadas por  personaxes que teñen una letra 'a' no seu nome de personaxe
 
 ### Consulta SQL
 
 ```sql
-SELECT noma FROM actores WHERE noma LIKE '%a%' AND (SELECT coda FROM interpretesser WHERE codper IN (SELECT codper FROM personaxes WHERE nomper LIKE '%a%')); [ESTA MAL]
+SELECT noma FROM actores WHERE noma LIKE '%a%' AND coda IN (SELECT coda FROM interpretesser WHERE codper IN (SELECT codper FROM personaxes WHERE nomper LIKE '%a%'));
 ```
 
 ### Resultado esperado
@@ -485,12 +461,18 @@ gray
 
 ---
 
-## **d3-c14) [DIFICIL] Amosar os nomes dos personaxes dos que dependen directamente soldados**
+## d3-c14) [DIFICIL] Amosar os nomes dos personaxes dos que dependen directamente soldados
 
 ### Consulta SQL
 
 ```sql
 SELECT DISTINCT m.nomper FROM personaxes o, personaxes m WHERE o.graduacion='soldado' AND o.codper2=m.codper;
+```
+
+#### Consulta alternativa
+
+```sql
+SELECT nomper FROM personaxes WHERE codper IN (SELECT codper2 FROM personaxes WHERE codper2 IS NOT NULL AND graduacion= 'soldado');
 ```
 
 ### Resultado esperado
