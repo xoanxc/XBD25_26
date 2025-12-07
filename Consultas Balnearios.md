@@ -1,9 +1,6 @@
 
 ## 1) Amosar nomes de balnearios cuxo coste diario supere os 45 euros
 
-**ES:** Mostrar nombres de balnearios cuyo coste diario supere los 45
-euros.
-
 ### Consulta SQL
 
 ``` sql
